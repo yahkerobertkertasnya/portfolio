@@ -2,10 +2,8 @@ const homeData = {
   greetings: "Hello, my name is",
   name: "Robert Wiliam",
   description: [
-    "I'm a passionate Full-Stack Engineer with a strong background in Software Engineering, DevOps, and Artificial Intelligence. \n" +
-      "I have years of experience working in the frontend and also backend development. The web applications that I have built and maintained has been used by thousands of users daily and thousand of users concurrently.\n" +
-      "I also have many experience working with database systems, including building and also maintaining relational databases. \n" +
-      "Linux System Administration is also one of my expertise as I used to implement automated CI/CD deployment systems and also other monitoring pipelines that has also been used in production.",
+    "I'm a Full-Stack Engineer passionate about building scalable web applications and AI solutions. With expertise in both frontend and backend development, I've built applications serving thousands of concurrent users daily.",
+    "My experience spans from DevOps and system administration to database architecture and AI implementation, focusing on creating robust and efficient solutions."
   ],
   expertise: [
     {
