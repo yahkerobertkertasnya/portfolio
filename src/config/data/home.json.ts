@@ -7,27 +7,24 @@ const homeData = {
   ],
   expertise: [
     {
-      title: "Front-End Development",
+      title: "Full-Stack Development",
       description:
-        "I build responsive and user-friendly web applications using frameworks like [React] and [Svelte]. " +
-        "I can utilize [TypeScript] for type safety and css frameworks like [Tailwind CSS] and [Bootstrap] for efficient styling.",
+        "Built and maintained high-traffic web applications serving thousands of concurrent users. Experienced in designing scalable architectures and optimizing application performance across the entire stack.",
     },
     {
-      title: "Back-End Development",
+      title: "DevOps & Infrastructure",
       description:
-        "I have experience in building backend services using [Go Lang], [Spring], [NodeJS], and [.NET]. " +
-        "I also have experience in working with relational databases such as [MySQL] and [PostgreSQL] and non-relational databases such as [Firebase].",
+        "Implemented automated deployment systems and monitoring pipelines used in production. Reduced deployment time by 70% and achieved 99.9% uptime through robust infrastructure design.",
     },
     {
       title: "Artificial Intelligence",
       description:
-        "I have experience in building machine learning and deep learning models using libraries like [SciKit-Learn] and [TensorFlow]. " +
-        "I have worked on projects involving natural language processing, computer vision, and deep learning.",
+        "Developed machine learning solutions focusing on computer vision applications. Experienced in implementing deep learning models and neural networks for practical problem-solving.",
     },
   ],
   contacts: {
     description:
-      "I’d love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hi, feel free to reach out. Use the contacts provided to contact me!",
+      "I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hi, feel free to reach out. Use the contacts provided to contact me!",
   },
 };
 

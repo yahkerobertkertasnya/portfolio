@@ -1,5 +1,4 @@
 ---
-import ArrowIcon from "@/components/common/icons/astro/ArrowIcon.astro";
 import EmailIcon from "@/components/common/icons/astro/EmailIcon.astro";
 import Layout from "@/components/layouts/Layout.astro";
 import { Image } from "astro:assets";
@@ -61,7 +60,7 @@ const processedExpertise = homeData.expertise.map((e) => {
           <a
             href="/CV_Robert_Wiliam.pdf"
             target="_blank"
-            class="slide-up button-animation group relative overflow-hidden rounded-full border-2 border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg delay-3">
+            class="slide-up button-animation group relative overflow-hidden rounded-full border border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg delay-3">
             <span class="relative z-10 flex items-center gap-2">
               Download CV
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,32 +83,52 @@ const processedExpertise = homeData.expertise.map((e) => {
           </div>
         </div>
       </section>
-      <section class="flex h-[80vh] min-h-[80vh] flex-col items-center justify-center max-lg:h-fit">
-        <h3 class="text-4xl font-semibold text-white max-lg:text-xl">My Expertise and Interest</h3>
-        <div class="flex max-w-full gap-8 pb-8 pt-16 max-lg:w-3/4 max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:pt-8">
-          {
-            processedExpertise.map((expertise) => {
-              return (
+      <section class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-20 max-lg:min-h-fit">
+        <div class="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow bg-[#00ADB5]/10 blur-[100px]"></div>
+        <div class="absolute right-1/2 top-1/3 -z-10 h-[400px] w-[400px] animate-pulse-slow bg-[#088395]/10 blur-[100px]"></div>
+        
+        <div class="flex flex-col items-center gap-20">
+          <div class="flex flex-col items-center gap-3">
+            <div class="slide-up flex items-center gap-3">
+              <div class="h-[1px] w-12 bg-white/30"></div>
+              <p class="text-lg font-light tracking-wide text-white/70">
+                What I Do
+              </p>
+              <div class="h-[1px] w-12 bg-white/30"></div>
+            </div>
+            <h3 class="slide-up text-4xl font-bold text-white max-lg:text-2xl">My Expertise and Interest</h3>
+          </div>
+
+          <div class="flex w-full flex-wrap justify-center gap-8 px-4">
+            {
+              processedExpertise.map((expertise) => (
                 <ExpertiseCard title={expertise.title}>
                   <div
-                    class="text-base text-white max-lg:text-2xs"
+                    class="text-base text-white/90 max-lg:text-2xs"
                     set:html={expertise.description}
                   />
                 </ExpertiseCard>
-              );
-            })
-          }
-        </div>
-        <div class="flex w-full justify-end max-lg:w-2/3 max-lg:justify-center">
-          <div class="arrow-animation group flex cursor-pointer items-center justify-center gap-2 font-light">
+              ))
+            }
+          </div>
+
+          <div class="group relative mt-12">
+            <div class="absolute -inset-[1px] rounded-full bg-gradient-to-r from-[#00ADB5] to-[#088395] opacity-0 blur-md transition-all duration-300 group-hover:opacity-50"></div>
+            <div class="absolute inset-[1px] rounded-full bg-[#13151A] transition-all"></div>
             <a
               href="./works"
-              class="text-xl text-white max-lg:text-sm">
-              Learn more about my works
+              class="relative flex items-center gap-3 rounded-full border border-[#00ADB5]/10 px-8 py-3 text-xl text-white/70 transition-all duration-300 group-hover:border-[#00ADB5] group-hover:text-white">
+              <span class="transition-transform duration-300 group-hover:translate-x-1">Learn more about my works</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </a>
-            <div class="w-6 group-hover:animate-wiggle max-lg:w-4">
-              <ArrowIcon />
-            </div>
           </div>
         </div>
       </section>
