@@ -1,6 +1,6 @@
 export interface IExperience {
   title: string;
-  company: string;
+  company?: string;
   startDate: Date;
   endDate?: Date;
   duration?: string;
