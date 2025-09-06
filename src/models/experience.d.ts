@@ -1,12 +1,14 @@
 export interface IExperience {
   title: string;
-  date: string;
+  company: string;
+  startDate: Date;
+  endDate?: Date;
+  duration?: string;
   description: string[];
-  imageUrls: IImageData[];
-}
-
-export interface IImageData {
-  src: string;
-  alt: string;
-  description: string;
+  techStack: string[];
+  imageUrls: {
+    src: string;
+    alt: string;
+    description: string;
+  }[];
 }

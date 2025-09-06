@@ -1,8 +1,9 @@
 ---
 import { cn } from "@/utils/class-name";
-import { type IExperience } from "@/models/experience";
+import type { IExperience } from "@/models/experience";
 import stringPreprocessor from "@/utils/string-preprocessor";
 import InteractiveImage from "@/components/common/astro/InteractiveImage.astro";
+import { formatDateRange } from "@/utils/date-calculator";
 
 interface Props {
   isLast?: boolean;
@@ -10,48 +11,84 @@ interface Props {
 }
 
 const { isLast = false, data } = Astro.props;
-
 const processedDescription = data.description.map(stringPreprocessor).join("");
 ---
 
 <li
   class={cn(
     isLast ? "" : "after:h-[calc(100%-2.9rem)] max-lg:after:h-[calc(100%-1.4rem)]",
-    "relative h-fit after:absolute max-lg:after:left-3 after:left-6 max-lg:after:top-[2.9rem] after:top-[4.4rem] after:mt-px after:w-px after:bg-fill-primary",
+    "relative h-fit after:absolute after:left-[1.78rem] after:top-[4.4rem] after:mt-px after:w-[1px] after:bg-[#00ADB5]/20 max-lg:after:left-[0.82rem] max-lg:after:top-[2.9rem]",
   )}>
-  <div class="flex items-start justify-start gap-8 py-6 max-lg:gap-2">
-    <span
-      class="me-3 flex aspect-square h-12 min-h-12 w-12 min-w-12 items-center justify-center rounded-full border-[1.5px] border-primary bg-fill-primary bg-opacity-40 text-sm text-white max-lg:h-6 max-lg:min-h-6 max-lg:w-4 max-lg:min-w-6"
-    ></span>
-    <section class="flex flex-col gap-8 pb-8 pt-2 max-lg:gap-4 max-lg:pb-4 max-lg:pt-0">
-      <header class="flex flex-col gap-2 max-lg:gap-1">
-        <h2 class="text-2xl font-bold text-white max-lg:text-base">{data.date}</h2>
-        <h2 class="text-2xl font-bold text-white max-lg:text-base">{data.title}</h2>
-      </header>
-      <div
-        class="text-base text-white max-lg:!text-xs"
-        set:html={processedDescription}
-      />
-      {
-        data.imageUrls.length > 0 && (
-          <div class="flex gap-8 py-4 max-lg:gap-4">
-            {data.imageUrls.map((image) => {
-              return (
-                <div class="flex flex-col items-start justify-start gap-2">
-                  <InteractiveImage
-                    class="cursor-pointer rounded-3xl object-cover transition-transform hover:scale-[102%] max-lg:rounded-lg"
-                    width={250}
-                    height={50}
-                    src={image.src}
-                    alt={image.alt}
-                  />
-                  <span class="text-base text-white text-opacity-50 max-lg:text-2xs">{image.description}</span>
-                </div>
-              );
-            })}
+  <div class="group relative flex items-start justify-start gap-8 py-6 max-lg:gap-2">
+    {/* Timeline dot */}
+    <div class="relative ml-2 max-lg:ml-1">
+      <div class="absolute -inset-2 rounded-full bg-[#00ADB5]/5 blur-[2px]"></div>
+      <div class="absolute -inset-[1px] rounded-full bg-[#00ADB5]/20"></div>
+      <span class="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#00ADB5]/40 bg-[#13151A] shadow-[0_0_15px_rgba(0,173,181,0.15)] transition-all duration-300 group-hover:border-[#00ADB5] group-hover:shadow-[0_0_20px_rgba(0,173,181,0.3)] max-lg:h-5 max-lg:w-5">
+        <div class="h-[3px] w-[3px] rounded-full bg-[#00ADB5] transition-all duration-300 group-hover:h-[5px] group-hover:w-[5px]"></div>
+      </span>
+    </div>
+
+    {/* Content */}
+    <section class="flex w-full max-w-3xl flex-col gap-6 pb-8 pt-2 max-lg:gap-4 max-lg:pb-4 max-lg:pt-0">
+      {/* Header */}
+      <header class="flex flex-col gap-4 border-b border-[#00ADB5]/20 pb-4">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex flex-col gap-1">
+              <h3 class="text-2xl font-bold text-[#00ADB5] drop-shadow-[0_0_8px_rgba(0,173,181,0.3)] max-lg:text-lg">{data.title}</h3>
+              <p class="text-xl font-medium text-[#00ADB5]/90 max-lg:text-base">{data.company}</p>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+              <p class="text-base font-medium text-white/70 max-lg:text-sm">{formatDateRange(data.startDate, data.endDate)}</p>
+              <p class="text-sm font-medium text-white/50 max-lg:text-xs">{data.duration}</p>
+            </div>
           </div>
-        )
-      }
+        </div>
+
+        {/* Tech Stack Tags */}
+        {data.techStack.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {data.techStack.map(tech => (
+              <span class="rounded-full bg-[#088395]/10 px-3 py-1 text-sm text-[#088395] shadow-[0_0_10px_rgba(8,131,149,0.1)] transition-all duration-300 hover:bg-[#088395]/20 hover:shadow-[0_0_15px_rgba(8,131,149,0.2)] max-lg:text-xs">
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Description */}
+      <div class="flex flex-col gap-6">
+        {/* Overview */}
+        <p class="text-base leading-relaxed text-white/80 max-lg:text-sm">
+          {data.description[0]}
+        </p>
+
+        {/* Detailed Description */}
+        <div
+          class="prose prose-invert max-w-none text-base text-white/70 prose-ul:mt-2 prose-li:mt-2 prose-strong:text-[#00ADB5] prose-strong:drop-shadow-[0_0_8px_rgba(0,173,181,0.3)] max-lg:text-sm [&_a]:text-[#088395] [&_a]:no-underline hover:[&_a]:underline"
+          set:html={processedDescription}
+        />
+      </div>
+
+      {/* Images */}
+      {data.imageUrls.length > 0 && (
+        <div class="grid grid-cols-2 gap-6 py-4 max-lg:grid-cols-1 max-lg:gap-4">
+          {data.imageUrls.map((image) => (
+            <div class="group/image flex flex-col gap-2">
+              <InteractiveImage
+                class="rounded-xl object-cover shadow-lg shadow-[#00ADB5]/5 transition-all duration-300 group-hover/image:translate-y-[-2px] group-hover/image:shadow-xl group-hover/image:shadow-[#00ADB5]/10 max-lg:rounded-lg"
+                width={400}
+                height={225}
+                src={image.src}
+                alt={image.alt}
+              />
+              <span class="text-sm text-white/50 max-lg:text-xs">{image.description}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   </div>
 </li>

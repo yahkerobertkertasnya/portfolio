@@ -24,7 +24,7 @@ const homeData = {
   ],
   contacts: {
     description:
-      "I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hi, feel free to reach out. Use the contacts provided to contact me!",
+      "Thank you for visiting my portfolio! These are my official contact details that I use for professional communication. If you're interested in discussing potential collaborations, have questions about my work, or would like to connect professionally, feel free to reach out through any of these verified channels.",
   },
 };
 
