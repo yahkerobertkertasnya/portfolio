@@ -5,6 +5,8 @@ import GithubLineIcon from "@/components/common/icons/astro/GithubLineIcon.astro
 import RedirectLineIcon from "@/components/common/icons/astro/RedirectLineIcon.astro";
 import stringPreprocessor from "@/utils/string-preprocessor";
 import InteractiveImage from "@/components/common/astro/InteractiveImage.astro";
+import Badge from "@/components/common/astro/Badge.astro";
+import LiveStatus from "@/components/works/react/LiveStatus.tsx";
 
 interface Props {
   data: IProject;
@@ -12,7 +14,7 @@ interface Props {
 }
 
 const {
-  data: { title, date, description, techStack, imageUrl, githubUrl, projectUrl, isLive, isCollaborative },
+  data: { title, date, description, techStack, imageUrl, githubUrl, projectUrl, isCollaborative },
   inverted,
 } = Astro.props;
 
@@ -22,9 +24,9 @@ const processedDescription = stringPreprocessor(description);
 <section
   class={cn(
     inverted ? "flex-row max-lg:flex-col" : "flex-row-reverse max-lg:flex-col",
-    "flex w-full max-lg:gap-6 gap-16 p-12 max-lg:p-2 hover:bg-primary hover:bg-opacity-50 duration-200 rounded-2xl cursor-pointer",
+    "flex w-full gap-16 rounded-2xl p-12 transition-all duration-300 hover:bg-[#00ADB5]/5 max-lg:gap-8 max-lg:p-6",
   )}>
-  <div class="flex w-[45%] flex-col gap-2 max-lg:w-full">
+  <div class="flex w-[45%] flex-col gap-4 max-lg:w-full">
     <div class="w-full">
       {
         imageUrl.length > 0 && (
@@ -33,7 +35,7 @@ const processedDescription = stringPreprocessor(description);
             width={550}
             height={350}
             src={imageUrl[0]!}
-            alt="Temporary Image"
+            alt={title}
           />
         )
       }
@@ -48,7 +50,7 @@ const processedDescription = stringPreprocessor(description);
                 width={550}
                 height={250}
                 src={url}
-                alt="Temporary Image"
+                alt={title}
               />
             );
           })}
@@ -57,16 +59,14 @@ const processedDescription = stringPreprocessor(description);
     }
   </div>
   <div class="flex w-[55%] flex-col items-start justify-center max-lg:w-full">
-    {
-      isLive && (
-        <div class="relative flex items-center">
-          <span class="absolute -left-0.5 inline-flex h-4 w-4 animate-ping rounded-full bg-red-500 opacity-75" />
-          <span class="relative inline-flex h-3 w-3 rounded-full bg-red-500" />
-          <p class="ps-3 text-base text-white max-lg:text-sm">LIVE</p>
-        </div>
-      )
-    }
-    <h4 class="flex items-center gap-2 text-3xl font-semibold text-white max-lg:gap-1 max-lg:text-lg">
+    <LiveStatus projectUrl={projectUrl} client:load>
+      <div class="relative flex items-center">
+        <span class="absolute -left-0.5 inline-flex h-4 w-4 animate-ping rounded-full bg-red-500 opacity-75" />
+        <span class="relative inline-flex h-3 w-3 rounded-full bg-red-500" />
+        <p class="ps-3 text-base text-white max-lg:text-sm">LIVE</p>
+      </div>
+    </LiveStatus>
+    <h4 class="flex items-center gap-2 text-3xl font-semibold text-white max-lg:text-lg">
       <span class="pe-4">{title}</span>
       {
         githubUrl?.map((url) => {
@@ -74,39 +74,33 @@ const processedDescription = stringPreprocessor(description);
             <a
               target="_blank"
               href={url}
-              class="w-8 cursor-pointer stroke-white transition-colors hover:stroke-primary max-lg:w-6 max-lg:min-w-6"
+              class="w-8 cursor-pointer stroke-white transition-colors hover:stroke-[#00ADB5] max-lg:w-6 max-lg:min-w-6"
               rel="noreferrer">
               <GithubLineIcon />
             </a>
           );
         })
       }
-      {
-        isLive && (
-          <a
-            target="_blank"
-            href={projectUrl}
-            class="w-8 cursor-pointer stroke-white transition-colors hover:stroke-primary max-lg:w-6 max-lg:min-w-6"
-            rel="noreferrer">
-            <RedirectLineIcon />
-          </a>
-        )
-      }
+      <LiveStatus projectUrl={projectUrl} client:load>
+        <a
+          target="_blank"
+          href={projectUrl}
+          class="w-8 cursor-pointer stroke-white transition-colors hover:stroke-[#00ADB5] max-lg:w-6 max-lg:min-w-6"
+          rel="noreferrer">
+          <RedirectLineIcon />
+        </a>
+      </LiveStatus>
     </h4>
-    <p class="pb-4 text-gray-500 max-lg:text-sm">{date} - {isCollaborative ? "Collaborative" : "Personal"}</p>
-    <Fragment
-      class="py-4 text-base max-lg:text-xs text-white"
+    <p class="pb-4 text-white/50 max-lg:text-sm">{date} • {isCollaborative ? "Collaborative" : "Personal"}</p>
+    <div
+      class="py-4 text-base text-white/80 max-lg:text-sm"
       set:html={processedDescription}
     />
-    <div class="flex flex-wrap gap-4 pt-4 max-lg:gap-2">
+    <div class="flex flex-wrap gap-2 pt-4">
       {
-        techStack.map((tech) => {
-          return (
-            <span class="flex items-center justify-center text-nowrap rounded-full bg-[#00ADB4] bg-opacity-20 px-4 py-0.5 text-center font-roboto-mono text-primary text-sm transition-transform hover:scale-110 max-lg:px-2 max-lg:text-xs">
-              {tech}
-            </span>
-          );
-        })
+        techStack.map((tech) => (
+          <Badge text={tech} />
+        ))
       }
     </div>
   </div>
