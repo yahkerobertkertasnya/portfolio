@@ -31,24 +31,24 @@ const processedExpertise = homeData.expertise.map((e) => {
     <Navbar />
     <SideContacts />
     <div class="flex w-3/4 flex-col justify-center max-lg:w-full">
-      <section class="relative flex h-[100vh] min-h-[100vh] items-center justify-between gap-20 max-lg:justify-center">
-        <div class="absolute left-0 top-1/4 -z-10 h-96 w-96 animate-pulse-slow bg-primary/20 blur-[120px]"></div>
-        <div class="absolute bottom-1/4 right-0 -z-10 h-96 w-96 animate-pulse-slow bg-[#088395]/20 blur-[120px]"></div>
+      <section class="relative flex h-[100vh] min-h-[100vh] items-center justify-between gap-20 max-lg:justify-center max-sm:gap-8 max-sm:px-4">
+        <div class="absolute left-0 top-1/4 -z-10 h-96 w-96 animate-pulse-slow bg-primary/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]"></div>
+        <div class="absolute bottom-1/4 right-0 -z-10 h-96 w-96 animate-pulse-slow bg-[#088395]/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]"></div>
         
-        <div class="flex w-2/3 flex-col items-start gap-12 max-lg:w-4/5 max-lg:items-center">
-          <div class="flex flex-col gap-6">
-            <div class="slide-up flex items-center gap-3">
-              <div class="h-[1px] w-16 bg-white/30"></div>
-              <p class="text-xl font-light tracking-wide text-white/70 max-lg:text-lg">
+        <div class="flex w-2/3 flex-col items-start gap-12 max-lg:w-4/5 max-lg:items-center max-sm:w-full max-sm:gap-8">
+          <div class="flex flex-col gap-6 max-sm:gap-4">
+            <div class="slide-up flex items-center gap-3 max-sm:gap-2">
+              <div class="h-[1px] w-16 bg-white/30 max-sm:w-8"></div>
+              <p class="text-xl font-light tracking-wide text-white/70 max-lg:text-lg max-sm:text-base">
                 {homeData.greetings}
               </p>
-              <div class="h-[1px] w-16 bg-white/30"></div>
+              <div class="h-[1px] w-16 bg-white/30 max-sm:w-8"></div>
             </div>
-            <h1 class="name-gradient slide-up w-full text-8xl font-bold drop-shadow-primary max-lg:text-center max-lg:text-5xl">
+            <h1 class="name-gradient slide-up w-full text-8xl font-bold drop-shadow-primary max-lg:text-center max-lg:text-5xl max-sm:text-3xl">
               {homeData.name}
             </h1>
           </div>
-          <div class="flex flex-col gap-8 text-[1.3rem] leading-relaxed tracking-wide text-white/90 max-lg:text-center max-lg:text-lg">
+          <div class="flex flex-col gap-8 text-[1.3rem] leading-relaxed tracking-wide text-white/90 max-lg:text-center max-lg:text-lg max-sm:gap-4 max-sm:text-base">
             {
               homeData.description.map((d, index) => (
                 <p class={"slide-up delay-" + index}>
@@ -60,10 +60,10 @@ const processedExpertise = homeData.expertise.map((e) => {
           <a
             href="/CV_Robert_Wiliam.pdf"
             target="_blank"
-            class="slide-up button-animation group relative overflow-hidden rounded-full border border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg delay-3">
-            <span class="relative z-10 flex items-center gap-2">
+            class="slide-up button-animation group relative overflow-hidden rounded-full border border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg max-sm:px-6 max-sm:py-3 max-sm:text-base delay-3">
+            <span class="relative z-10 flex items-center gap-2 max-sm:gap-1">
               Download CV
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1 max-sm:h-5 max-sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
