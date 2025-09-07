@@ -23,7 +23,7 @@ interface ShootingStarsProps {
   starWidth?: number;
   starHeight?: number;
   className?: string;
-  maxLifetime?: number; // Add maxLifetime prop
+  maxLifetime?: number;
 }
 
 const getRandomStartPoint = () => {
@@ -54,7 +54,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   starWidth = 10,
   starHeight = 1,
   className,
-  maxLifetime = 5000, // Default maxLifetime in milliseconds
+  maxLifetime = 5000,
 }) => {
   const [stars, setStars] = useState<ShootingStar[]>([]);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -95,7 +95,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
             const newLifetime = star.lifetime + 16;
 
             if (newX < -20 || newX > window.innerWidth + 20 || newY < -20 || newY > window.innerHeight + 20 || newLifetime >= maxLifetime) {
-              return null; // Mark for removal
+              return null;
             }
             return {
               ...star,
@@ -106,7 +106,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
               lifetime: newLifetime,
             };
           })
-          .filter((star) => star !== null) as ShootingStar[]; // Filter out nulls
+          .filter((star) => star !== null) as ShootingStar[];
       });
     };
 

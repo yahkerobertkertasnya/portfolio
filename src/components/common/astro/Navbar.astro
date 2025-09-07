@@ -26,7 +26,7 @@ const isActive = (link: string) => pathname === link;
   role="navigation"
   aria-label="Main navigation"
   style="top: 2rem"
-  class="shadow-primary fixed z-50 flex w-96 justify-between rounded-full border border-white/10 bg-[#23262d]/50 backdrop-blur-lg px-10 py-4 text-primary font-medium text-white shadow-primary-shiny transition-all duration-300 ease-in-out max-lg:w-64 max-lg:px-8 max-lg:py-3 hover:bg-[#23262d]">
+  class="shadow-primary fixed z-50 flex w-96 justify-between rounded-full border border-white/10 bg-[#23262d]/50 px-10 py-4 text-primary font-medium text-white shadow-primary-shiny backdrop-blur-lg transition-all duration-300 ease-in-out hover:bg-[#23262d] max-lg:w-64 max-lg:px-8 max-lg:py-3">
   {
     pages.map((page) => (
       <a
@@ -34,9 +34,7 @@ const isActive = (link: string) => pathname === link;
         aria-current={isActive(page.link) ? "page" : undefined}
         class={cn(
           "underline-animation relative cursor-pointer text-base transition-colors duration-300 ease-in-out max-lg:text-xs",
-          isActive(page.link) 
-            ? "text-[#00ADB5] underline-active after:scale-x-100" 
-            : "text-white/90 hover:text-[#00ADB5]"
+          isActive(page.link) ? "underline-active text-[#00ADB5] after:scale-x-100" : "text-white/90 hover:text-[#00ADB5]",
         )}>
         {page.name}
       </a>
@@ -50,27 +48,23 @@ const isActive = (link: string) => pathname === link;
   let ticking = false;
   let isHidden = false;
 
-  // Throttled scroll handler for better performance
   function updateNavbar() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollThreshold = 100; // Minimum scroll distance to trigger hide/show
+    const scrollThreshold = 100;
 
     if (scrollTop > scrollThreshold) {
       if (scrollTop < lastScrollTop && isHidden) {
-        // Scrolling up - show navbar
         navbar.style.top = "2rem";
         navbar.style.transform = "translateY(0)";
         navbar.classList.remove("navbar-hidden");
         isHidden = false;
       } else if (scrollTop > lastScrollTop && !isHidden) {
-        // Scrolling down - hide navbar
         navbar.style.top = "-8rem";
         navbar.style.transform = "translateY(-100%)";
         navbar.classList.add("navbar-hidden");
         isHidden = true;
       }
     } else {
-      // Near top of page - always show navbar
       navbar.style.top = "2rem";
       navbar.style.transform = "translateY(0)";
       navbar.classList.remove("navbar-hidden");
@@ -81,7 +75,6 @@ const isActive = (link: string) => pathname === link;
     ticking = false;
   }
 
-  // Throttle scroll events for better performance
   function requestTick() {
     if (!ticking) {
       requestAnimationFrame(updateNavbar);
@@ -91,7 +84,6 @@ const isActive = (link: string) => pathname === link;
 
   document.addEventListener("scroll", requestTick, { passive: true });
 
-  // Add keyboard navigation support
   document.addEventListener("keydown", (e) => {
     if (e.altKey) {
       switch (e.key) {
@@ -111,13 +103,12 @@ const isActive = (link: string) => pathname === link;
     }
   });
 
-  // Add focus management for accessibility
   const navLinks = navbar.querySelectorAll("a");
   navLinks.forEach((link) => {
     link.addEventListener("focus", () => {
       navbar.classList.add("navbar-focused");
     });
-    
+
     link.addEventListener("blur", () => {
       navbar.classList.remove("navbar-focused");
     });

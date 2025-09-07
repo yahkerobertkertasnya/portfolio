@@ -32,9 +32,12 @@ const processedExpertise = homeData.expertise.map((e) => {
     <SideContacts />
     <div class="flex w-3/4 flex-col justify-center max-lg:w-full">
       <section class="relative flex h-[100vh] min-h-[100vh] items-center justify-between gap-20 max-lg:justify-center max-sm:gap-8 max-sm:px-4">
-        <div class="absolute left-0 top-1/4 -z-10 h-96 w-96 animate-pulse-slow bg-primary/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]"></div>
-        <div class="absolute bottom-1/4 right-0 -z-10 h-96 w-96 animate-pulse-slow bg-[#088395]/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]"></div>
-        
+        <div class="animate-pulse-slow absolute left-0 top-1/4 -z-10 h-96 w-96 bg-primary/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]">
+        </div>
+        <div
+          class="animate-pulse-slow absolute bottom-1/4 right-0 -z-10 h-96 w-96 bg-[#088395]/20 blur-[120px] max-sm:h-64 max-sm:w-64 max-sm:blur-[80px]">
+        </div>
+
         <div class="flex w-2/3 flex-col items-start gap-12 max-lg:w-4/5 max-lg:items-center max-sm:w-full max-sm:gap-8">
           <div class="flex flex-col gap-6 max-sm:gap-4">
             <div class="slide-up flex items-center gap-3 max-sm:gap-2">
@@ -48,23 +51,28 @@ const processedExpertise = homeData.expertise.map((e) => {
               {homeData.name}
             </h1>
           </div>
-          <div class="flex flex-col gap-8 text-[1.3rem] leading-relaxed tracking-wide text-white/90 max-lg:text-center max-lg:text-lg max-sm:gap-4 max-sm:text-base">
-            {
-              homeData.description.map((d, index) => (
-                <p class={"slide-up delay-" + index}>
-                  {d}
-                </p>
-              ))
-            }
+          <div
+            class="flex flex-col gap-8 text-[1.3rem] leading-relaxed tracking-wide text-white/90 max-lg:text-center max-lg:text-lg max-sm:gap-4 max-sm:text-base">
+            {homeData.description.map((d, index) => <p class={`slide-up delay-${index}`}>{d}</p>)}
           </div>
           <a
             href="/CV_Robert_Wiliam.pdf"
             target="_blank"
-            class="slide-up button-animation group relative overflow-hidden rounded-full border border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg max-sm:px-6 max-sm:py-3 max-sm:text-base delay-3">
+            class="slide-up button-animation delay-3 group relative overflow-hidden rounded-full border border-[#00ADB5] bg-[#00ADB5]/10 px-10 py-4 text-xl font-medium text-[#00ADB5] backdrop-blur-sm transition-all hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-[#00ADB5]/20 max-lg:text-lg max-sm:px-6 max-sm:py-3 max-sm:text-base">
             <span class="relative z-10 flex items-center gap-2 max-sm:gap-1">
               Download CV
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1 max-sm:h-5 max-sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 transition-transform group-hover:translate-x-1 max-sm:h-5 max-sm:w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
               </svg>
             </span>
           </a>
@@ -72,7 +80,9 @@ const processedExpertise = homeData.expertise.map((e) => {
         <div class="relative flex w-[400px] flex-col items-center justify-center max-lg:hidden">
           <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#00ADB5]/20 via-[#00ADB5]/10 to-transparent blur-3xl"></div>
           <div class="group relative">
-            <div class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#00ADB5] to-[#088395] opacity-75 blur transition-all group-hover:opacity-100"></div>
+            <div
+              class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#00ADB5] to-[#088395] opacity-75 blur transition-all group-hover:opacity-100">
+            </div>
             <Image
               class="relative aspect-square rounded-full object-cover ring-1 ring-white/20"
               width={400}
@@ -84,16 +94,16 @@ const processedExpertise = homeData.expertise.map((e) => {
         </div>
       </section>
       <section class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-20 max-lg:min-h-fit">
-        <div class="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow bg-[#00ADB5]/10 blur-[100px]"></div>
-        <div class="absolute right-1/2 top-1/3 -z-10 h-[400px] w-[400px] animate-pulse-slow bg-[#088395]/10 blur-[100px]"></div>
-        
+        <div
+          class="animate-pulse-slow absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[#00ADB5]/10 blur-[100px]">
+        </div>
+        <div class="animate-pulse-slow absolute right-1/2 top-1/3 -z-10 h-[400px] w-[400px] bg-[#088395]/10 blur-[100px]"></div>
+
         <div class="flex flex-col items-center gap-20">
           <div class="flex flex-col items-center gap-3">
             <div class="slide-up flex items-center gap-3">
               <div class="h-[1px] w-12 bg-white/30"></div>
-              <p class="text-lg font-light tracking-wide text-white/70">
-                What I Do
-              </p>
+              <p class="text-lg font-light tracking-wide text-white/70">What I Do</p>
               <div class="h-[1px] w-12 bg-white/30"></div>
             </div>
             <h3 class="slide-up text-4xl font-bold text-white max-lg:text-2xl">My Expertise and Interest</h3>
@@ -113,33 +123,36 @@ const processedExpertise = homeData.expertise.map((e) => {
           </div>
 
           <div class="group relative mt-12">
-            <div class="absolute -inset-[1px] rounded-full bg-gradient-to-r from-[#00ADB5] to-[#088395] opacity-0 blur-md transition-all duration-300 group-hover:opacity-50"></div>
+            <div
+              class="absolute -inset-[1px] rounded-full bg-gradient-to-r from-[#00ADB5] to-[#088395] opacity-0 blur-md transition-all duration-300 group-hover:opacity-50">
+            </div>
             <div class="absolute inset-[1px] rounded-full bg-[#13151A] transition-all"></div>
             <a
               href="./works"
               class="relative flex items-center gap-3 rounded-full border border-[#00ADB5]/10 px-8 py-3 text-xl text-white/70 transition-all duration-300 group-hover:border-[#00ADB5] group-hover:text-white">
               <span class="transition-transform duration-300 group-hover:translate-x-1">Learn more about my works</span>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5l7 7m0 0l-7 7m7-7H3" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M13 5l7 7m0 0l-7 7m7-7H3"
+                ></path>
               </svg>
             </a>
           </div>
         </div>
       </section>
       <section class="relative flex flex-col items-center gap-16 py-20 max-lg:gap-10 max-lg:pt-32">
-        
         <div class="flex flex-col items-center gap-3">
           <div class="slide-up flex items-center gap-3">
             <div class="h-[1px] w-12 bg-white/30"></div>
-            <p class="text-lg font-light tracking-wide text-white/70">
-              Contact
-            </p>
+            <p class="text-lg font-light tracking-wide text-white/70">Contact</p>
             <div class="h-[1px] w-12 bg-white/30"></div>
           </div>
           <h3 class="slide-up text-4xl font-bold text-white max-lg:text-2xl">Let's Get In Touch</h3>
@@ -183,12 +196,7 @@ const processedExpertise = homeData.expertise.map((e) => {
 
 <style>
   .name-gradient {
-    background: linear-gradient(
-      to right,
-      #00ADB4,
-      #37b7c3 50%,
-      #088395
-    );
+    background: linear-gradient(to right, #00adb4, #37b7c3 50%, #088395);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -201,7 +209,7 @@ const processedExpertise = homeData.expertise.map((e) => {
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, #00ADB4, #088395);
+    background: linear-gradient(to right, #00adb4, #088395);
     transform: scaleX(0);
     transform-origin: left;
     transition: all 0.4s ease;
@@ -243,8 +251,16 @@ const processedExpertise = homeData.expertise.map((e) => {
     transform: scaleX(1);
   }
 
-  .delay-0 { animation-delay: 200ms; }
-  .delay-1 { animation-delay: 300ms; }
-  .delay-2 { animation-delay: 400ms; }
-  .delay-3 { animation-delay: 500ms; }
+  .delay-0 {
+    animation-delay: 200ms;
+  }
+  .delay-1 {
+    animation-delay: 300ms;
+  }
+  .delay-2 {
+    animation-delay: 400ms;
+  }
+  .delay-3 {
+    animation-delay: 500ms;
+  }
 </style>
