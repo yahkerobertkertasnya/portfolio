@@ -2,34 +2,29 @@ const homeData = {
   greetings: "Hello, my name is",
   name: "Robert Wiliam",
   description: [
-    "I'm a passionate Full-Stack Engineer with a strong background in Software Engineering, DevOps, and Artificial Intelligence. \n" +
-      "I have years of experience working in the frontend and also backend development. The web applications that I have built and maintained has been used by thousands of users daily and thousand of users concurrently.\n" +
-      "I also have many experience working with database systems, including building and also maintaining relational databases. \n" +
-      "Linux System Administration is also one of my expertise as I used to implement automated CI/CD deployment systems and also other monitoring pipelines that has also been used in production.",
+    "I'm a Full-Stack Engineer passionate about building scalable web applications and AI solutions. With expertise in both frontend and backend development, I've built applications serving thousands of concurrent users daily.",
+    "My experience spans from DevOps and system administration to database architecture and AI implementation, focusing on creating robust and efficient solutions."
   ],
   expertise: [
     {
-      title: "Front-End Development",
+      title: "Full-Stack Development",
       description:
-        "I build responsive and user-friendly web applications using frameworks like [React] and [Svelte]. " +
-        "I can utilize [TypeScript] for type safety and css frameworks like [Tailwind CSS] and [Bootstrap] for efficient styling.",
+        "Built and maintained high-traffic web applications serving thousands of concurrent users. Experienced in designing scalable architectures and optimizing application performance across the entire stack.",
     },
     {
-      title: "Back-End Development",
+      title: "DevOps & Infrastructure",
       description:
-        "I have experience in building backend services using [Go Lang], [Spring], [NodeJS], and [.NET]. " +
-        "I also have experience in working with relational databases such as [MySQL] and [PostgreSQL] and non-relational databases such as [Firebase].",
+        "Implemented automated deployment systems and monitoring pipelines used in production. Reduced deployment time by 70% and achieved 99.9% uptime through robust infrastructure design.",
     },
     {
       title: "Artificial Intelligence",
       description:
-        "I have experience in building machine learning and deep learning models using libraries like [SciKit-Learn] and [TensorFlow]. " +
-        "I have worked on projects involving natural language processing, computer vision, and deep learning.",
+        "Developed machine learning solutions focusing on computer vision applications. Experienced in implementing deep learning models and neural networks for practical problem-solving.",
     },
   ],
   contacts: {
     description:
-      "I’d love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hi, feel free to reach out. Use the contacts provided to contact me!",
+      "Thank you for visiting my portfolio! These are my official contact details that I use for professional communication. If you're interested in discussing potential collaborations, have questions about my work, or would like to connect professionally, feel free to reach out through any of these verified channels.",
   },
 };
 

@@ -1,6 +1,7 @@
 ---
 import { cn } from "@/utils/class-name";
 import { getWebEndpoint } from "@/config/web";
+
 const pages = [
   {
     name: "Home",
@@ -17,42 +18,105 @@ const pages = [
 ];
 
 const { pathname } = Astro.url;
+const isActive = (link: string) => pathname === link;
 ---
 
-<div
+<nav
   id="navbar"
+  role="navigation"
+  aria-label="Main navigation"
   style="top: 2rem"
-  class="shadow-primary fixed z-10 flex w-96 justify-between rounded-full border border-primary bg-primary px-10 py-4 text-primary font-medium text-white shadow-primary-shiny transition-all max-lg:w-64 max-lg:px-8 max-lg:py-3">
+  class="shadow-primary fixed z-50 flex w-96 justify-between rounded-full border border-white/10 bg-[#23262d]/50 px-10 py-4 text-primary font-medium text-white shadow-primary-shiny backdrop-blur-lg transition-all duration-300 ease-in-out hover:bg-[#23262d] max-lg:w-64 max-lg:px-8 max-lg:py-3">
   {
     pages.map((page) => (
       <a
         href={page.link}
+        aria-current={isActive(page.link) ? "page" : undefined}
         class={cn(
-          pathname === page.link ? "underline-active after:scale-x-100" : "",
-          "underline-animation relative cursor-pointer text-base max-lg:text-xs",
+          "underline-animation relative cursor-pointer text-base transition-colors duration-300 ease-in-out max-lg:text-xs",
+          isActive(page.link) ? "underline-active text-[#00ADB5] after:scale-x-100" : "text-white/90 hover:text-[#00ADB5]",
         )}>
         {page.name}
       </a>
     ))
   }
-</div>
+</nav>
 
 <script>
   const navbar = document.getElementById("navbar")!;
   let lastScrollTop = 0;
-  document.addEventListener("scroll", () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let ticking = false;
+  let isHidden = false;
 
-    if (scrollTop < lastScrollTop) {
-      navbar.style.top = "2rem";
+  function updateNavbar() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollThreshold = 100;
+
+    if (scrollTop > scrollThreshold) {
+      if (scrollTop < lastScrollTop && isHidden) {
+        navbar.style.top = "2rem";
+        navbar.style.transform = "translateY(0)";
+        navbar.classList.remove("navbar-hidden");
+        isHidden = false;
+      } else if (scrollTop > lastScrollTop && !isHidden) {
+        navbar.style.top = "-8rem";
+        navbar.style.transform = "translateY(-100%)";
+        navbar.classList.add("navbar-hidden");
+        isHidden = true;
+      }
     } else {
-      navbar.style.top = "-8rem";
+      navbar.style.top = "2rem";
+      navbar.style.transform = "translateY(0)";
+      navbar.classList.remove("navbar-hidden");
+      isHidden = false;
     }
+
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    ticking = false;
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar);
+      ticking = true;
+    }
+  }
+
+  document.addEventListener("scroll", requestTick, { passive: true });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.altKey) {
+      switch (e.key) {
+        case "1":
+          e.preventDefault();
+          window.location.href = "/";
+          break;
+        case "2":
+          e.preventDefault();
+          window.location.href = "/experience";
+          break;
+        case "3":
+          e.preventDefault();
+          window.location.href = "/works";
+          break;
+      }
+    }
+  });
+
+  const navLinks = navbar.querySelectorAll("a");
+  navLinks.forEach((link) => {
+    link.addEventListener("focus", () => {
+      navbar.classList.add("navbar-focused");
+    });
+
+    link.addEventListener("blur", () => {
+      navbar.classList.remove("navbar-focused");
+    });
   });
 </script>
 
 <style>
+  /* Clean underline animation */
   .underline-animation::after {
     content: "";
     position: absolute;
@@ -63,7 +127,7 @@ const { pathname } = Astro.url;
     background-color: #00adb4;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
   }
 
   .underline-active::after {
@@ -72,5 +136,44 @@ const { pathname } = Astro.url;
 
   .underline-animation:hover::after {
     transform: scaleX(1);
+  }
+
+  /* Navbar state classes */
+  .navbar-hidden {
+    opacity: 0.8;
+    transform: translateY(-100%);
+  }
+
+  .navbar-focused {
+    box-shadow: 0 0 20px rgba(0, 173, 181, 0.4);
+    border-color: #00adb4;
+  }
+
+  /* Smooth transitions for navbar */
+  #navbar {
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    #navbar {
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    #navbar,
+    #navbar a,
+    .underline-animation::after {
+      transition: none;
+    }
+  }
+
+  /* Focus visible for accessibility */
+  #navbar a:focus-visible {
+    outline: 2px solid #00adb4;
+    outline-offset: 2px;
+    border-radius: 0.25rem;
   }
 </style>
