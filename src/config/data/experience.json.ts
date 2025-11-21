@@ -1,10 +1,12 @@
 import type { IExperience } from "@/models/experience";
 import { calculateDuration, formatDuration } from "@/utils/date-calculator";
 
-const experienceData: IExperience[] = [
+const rawExperienceData: Omit<IExperience, "duration">[] = [
   {
     title: "Fullstack Engineer",
     company: "Lacak.io",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2025-02-01"),
     description: [
       "Working on high-traffic backend systems and data pipelines, focusing on scalability and performance optimization.",
@@ -39,7 +41,9 @@ const experienceData: IExperience[] = [
   },
   {
     title: "Fullstack Engineer",
-    company: "Freelance",
+    company: null,
+    engagementType: "Parttime",
+    location: "Remote",
     startDate: new Date("2025-06-01"),
     description: [
       "Managing observability and error resolution for a political donor fundraising CRM application.",
@@ -71,7 +75,9 @@ const experienceData: IExperience[] = [
   },
   {
     title: "Frontend Lead",
-    company: "Freelance",
+    company: null,
+    engagementType: "Freelance",
+    location: "Remote",
     startDate: new Date("2025-04-01"),
     endDate: new Date("2025-05-31"),
     description: [
@@ -90,6 +96,8 @@ const experienceData: IExperience[] = [
   {
     title: "Research and Development Staff",
     company: "Software Laboratory Center BINUS University",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2024-02-01"),
     endDate: new Date("2025-02-01"),
     description: [
@@ -126,6 +134,8 @@ const experienceData: IExperience[] = [
   {
     title: "Laboratory Teacher",
     company: "Software Laboratory Center BINUS University",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2023-02-01"),
     endDate: new Date("2024-02-02"),
     description: [
@@ -178,7 +188,9 @@ const experienceData: IExperience[] = [
       },
     ],
   },
-].map((exp) => ({
+];
+
+const experienceData: IExperience[] = rawExperienceData.map((exp) => ({
   ...exp,
   duration: formatDuration(calculateDuration(exp.startDate, exp.endDate)),
 }));
