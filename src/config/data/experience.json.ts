@@ -24,6 +24,7 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
       "PHP",
       "Yii",
       "Go",
+      "Python",
       "Debezium",
       "Linux Server",
       "Elasticsearch",
@@ -36,6 +37,7 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
       "Risingwave",
       "Kafka",
       "Docker",
+      "Dagster"
     ],
     imageUrls: [],
   },
