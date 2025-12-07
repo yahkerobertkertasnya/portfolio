@@ -47,7 +47,7 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
   {
     title: "Fullstack Engineer",
     company: null,
-    engagementType: "Parttime",
+    engagementType: "Freelance",
     location: "Remote",
     startDate: new Date("2025-06-01"),
     description: [
