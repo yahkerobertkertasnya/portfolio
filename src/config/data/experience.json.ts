@@ -14,7 +14,7 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
       ":",
       "- Built and maintained backend services using [Spring Boot], [Go], and [PHP] for high-load, data-intensive production systems.",
       "- Designed and implemented real-time CDC pipelines using [Debezium], [Apache Camel], [Kafka], and [RisingWave], enabling bidirectional synchronization across [Salesforce], [PostgreSQL], [MariaDB], and [Elasticsearch].",
-      "- Improved performance of a legacy PHP system operating under heavy query load, achieving a 37,500% speedup on a critical query (2 minutes to 300 ms).",
+      "- Improved performance of a legacy PHP system operating under million-scale internal DB operations per second, achieving a 37,500% speedup on a critical query (2 minutes to 300 ms).",
       "- Developed a fullstack application using a [Golang] backend and [React] frontend, contributing to both API design and UI development.",
       "- Implemented data orchestration workflows using [Meltano] and [Dagster], enabling scalable ETL processing and automated data synchronization pipelines.",
       ";",
