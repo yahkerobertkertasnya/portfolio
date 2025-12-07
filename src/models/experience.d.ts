@@ -1,6 +1,10 @@
+export type ExperienceEngagementType = "Fulltime" | "Parttime" | "Freelance";
+
 export interface IExperience {
   title: string;
-  company?: string;
+  company?: string | null;
+  engagementType?: ExperienceEngagementType;
+  location?: string;
   startDate: Date;
   endDate?: Date;
   duration?: string;

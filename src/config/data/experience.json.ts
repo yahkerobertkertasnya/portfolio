@@ -1,18 +1,22 @@
 import type { IExperience } from "@/models/experience";
 import { calculateDuration, formatDuration } from "@/utils/date-calculator";
 
-const experienceData: IExperience[] = [
+const rawExperienceData: Omit<IExperience, "duration">[] = [
   {
     title: "Fullstack Engineer",
     company: "Lacak.io",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2025-02-01"),
     description: [
       "Working on high-traffic backend systems and data pipelines, focusing on scalability and performance optimization.",
       "\n",
       ":",
-      "- {Backend Services}: Built scalable backend systems using [Spring Boot], [PHP] and [Go]",
-      "- {Data Pipeline}: Implemented unidirectional and bidirectional CDC pipelines using [Debezium], [Apache Camel], [Kafka], and [RisingWave] for real-time data synchronization across [Elasticsearch], [Salesforce], [MariaDB], and [PostgreSQL]",
-      "- {System Optimization}: Improved legacy [PHP] system performance by {37,500%} through query optimization",
+      "- Built and maintained backend services using [Spring Boot], [Go], and [PHP] for high-load, data-intensive production systems.",
+      "- Designed and implemented real-time CDC pipelines using [Debezium], [Apache Camel], [Kafka], and [RisingWave], enabling bidirectional synchronization across [Salesforce], [PostgreSQL], [MariaDB], and [Elasticsearch].",
+      "- Improved performance of a legacy PHP system operating under million-scale internal DB operations per second, achieving a 37,500% speedup on a critical query (2 minutes to 300 ms).",
+      "- Developed a fullstack application using a [Golang] backend and [React] frontend, contributing to both API design and UI development.",
+      "- Implemented data orchestration workflows using [Meltano] and [Dagster], enabling scalable ETL processing and automated data synchronization pipelines.",
       ";",
     ],
     techStack: [
@@ -22,6 +26,7 @@ const experienceData: IExperience[] = [
       "PHP",
       "Yii",
       "Go",
+      "Python",
       "Debezium",
       "Linux Server",
       "Elasticsearch",
@@ -34,12 +39,16 @@ const experienceData: IExperience[] = [
       "Risingwave",
       "Kafka",
       "Docker",
+      "Meltano",
+      "Dagster",
     ],
     imageUrls: [],
   },
   {
     title: "Fullstack Engineer",
-    company: "Freelance",
+    company: null,
+    engagementType: "Freelance",
+    location: "Remote",
     startDate: new Date("2025-06-01"),
     description: [
       "Managing observability and error resolution for a political donor fundraising CRM application.",
@@ -71,7 +80,9 @@ const experienceData: IExperience[] = [
   },
   {
     title: "Frontend Lead",
-    company: "Freelance",
+    company: null,
+    engagementType: "Freelance",
+    location: "Remote",
     startDate: new Date("2025-04-01"),
     endDate: new Date("2025-05-31"),
     description: [
@@ -90,6 +101,8 @@ const experienceData: IExperience[] = [
   {
     title: "Research and Development Staff",
     company: "Software Laboratory Center BINUS University",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2024-02-01"),
     endDate: new Date("2025-02-01"),
     description: [
@@ -126,6 +139,8 @@ const experienceData: IExperience[] = [
   {
     title: "Laboratory Teacher",
     company: "Software Laboratory Center BINUS University",
+    engagementType: "Fulltime",
+    location: "Jakarta, Indonesia",
     startDate: new Date("2023-02-01"),
     endDate: new Date("2024-02-02"),
     description: [
@@ -178,7 +193,9 @@ const experienceData: IExperience[] = [
       },
     ],
   },
-].map((exp) => ({
+];
+
+const experienceData: IExperience[] = rawExperienceData.map((exp) => ({
   ...exp,
   duration: formatDuration(calculateDuration(exp.startDate, exp.endDate)),
 }));
