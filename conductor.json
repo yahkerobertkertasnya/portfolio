@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "setup": "pnpm install --prefer-offline || true",
+    "archive": "rm -rf node_modules && rm -rf dist && rm -rf .astro"
+  }
+}
