@@ -35,34 +35,34 @@ export default function ProjectList({ personalProjects, professionalProjects }: 
           <button
             className={cn(
               "group relative px-3 py-1.5 text-lg font-medium tracking-wide transition-all duration-300 max-lg:text-base",
-              type === ProjectType.Professional
-                ? "text-[#00ADB5] drop-shadow-[0_0_8px_rgba(0,173,181,0.3)]"
-                : "text-white/70 hover:text-white/90"
+              type === ProjectType.Professional ? "text-[#00ADB5] drop-shadow-[0_0_8px_rgba(0,173,181,0.3)]" : "text-white/70 hover:text-white/90",
             )}
             onClick={() => setType(ProjectType.Professional)}>
             Professional
-            <span className={cn(
-              "absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left transition-all duration-300",
-              type === ProjectType.Professional
-                ? "scale-x-100 bg-[#00ADB5] shadow-[0_0_8px_rgba(0,173,181,0.3)]"
-                : "scale-x-0 bg-white/50 group-hover:scale-x-100"
-            )} />
+            <span
+              className={cn(
+                "absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left transition-all duration-300",
+                type === ProjectType.Professional
+                  ? "scale-x-100 bg-[#00ADB5] shadow-[0_0_8px_rgba(0,173,181,0.3)]"
+                  : "scale-x-0 bg-white/50 group-hover:scale-x-100",
+              )}
+            />
           </button>
           <button
             className={cn(
               "group relative px-3 py-1.5 text-lg font-medium tracking-wide transition-all duration-300 max-lg:text-base",
-              type === ProjectType.Personal
-                ? "text-[#00ADB5] drop-shadow-[0_0_8px_rgba(0,173,181,0.3)]"
-                : "text-white/70 hover:text-white/90"
+              type === ProjectType.Personal ? "text-[#00ADB5] drop-shadow-[0_0_8px_rgba(0,173,181,0.3)]" : "text-white/70 hover:text-white/90",
             )}
             onClick={() => setType(ProjectType.Personal)}>
             Personal
-            <span className={cn(
-              "absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left transition-all duration-300",
-              type === ProjectType.Personal
-                ? "scale-x-100 bg-[#00ADB5] shadow-[0_0_8px_rgba(0,173,181,0.3)]"
-                : "scale-x-0 bg-white/50 group-hover:scale-x-100"
-            )} />
+            <span
+              className={cn(
+                "absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left transition-all duration-300",
+                type === ProjectType.Personal
+                  ? "scale-x-100 bg-[#00ADB5] shadow-[0_0_8px_rgba(0,173,181,0.3)]"
+                  : "scale-x-0 bg-white/50 group-hover:scale-x-100",
+              )}
+            />
           </button>
         </div>
         <div className="h-[1px] w-12 bg-white/30"></div>
