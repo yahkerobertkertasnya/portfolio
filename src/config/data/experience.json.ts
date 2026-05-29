@@ -19,14 +19,7 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
       "- {Code Reviews}: Reviewed and provided feedback on teammates' pull requests, ensuring code quality and consistency across the codebase.",
       ";",
     ],
-    techStack: [
-      "TypeScript",
-      "Next.js",
-      "Twilio",
-      "Plivo",
-      "Inngest",
-      "PostgreSQL",
-    ],
+    techStack: ["TypeScript", "Next.js", "Twilio", "Plivo", "Inngest", "PostgreSQL"],
     imageUrls: [],
   },
   {
