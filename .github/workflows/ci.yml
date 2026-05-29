@@ -15,8 +15,8 @@ permissions:
   checks: write
 
 jobs:
-  lint:
-    name: Lint Check
+  prettier:
+    name: Prettier Check
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
@@ -38,6 +38,27 @@ jobs:
 
       - name: Prettier check
         run: pnpm prettier --check '**/*.{astro,mdx,js,jsx,ts,tsx,json,css,scss,html}'
+
+  eslint:
+    name: ESLint Check
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: ESLint
         uses: reviewdog/action-eslint@v1
