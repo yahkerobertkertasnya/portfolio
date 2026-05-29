@@ -3,6 +3,33 @@ import { calculateDuration, formatDuration } from "@/utils/date-calculator";
 
 const rawExperienceData: Omit<IExperience, "duration">[] = [
   {
+    title: "Software Engineer",
+    company: "Raise More",
+    engagementType: "Fulltime",
+    location: "New York City Metropolitan Area (Remote)",
+    startDate: new Date("2026-02-01"),
+    endDate: new Date("2026-05-31"),
+    description: [
+      "Led the design and implementation of a multi-provider telecom abstraction layer for a live fundraising CRM used by Democratic political campaigns.",
+      "\n",
+      ":",
+      "- {Telecom Provider Abstraction}: Architected a provider-agnostic abstraction layer over [Twilio] and [Plivo], decoupling all dialer and SMS routes from direct SDK calls. Migrated every dialer route incrementally — WebRTC token, dial-out, conference start, outbound participants — without disrupting live calling sessions.",
+      "- {SMS-Only Numbers & Plivo}: Built end-to-end support for SMS-only caller IDs: onboarding flow, buy-number frontend, server-side validation, and dialer guards preventing voice calls on SMS-only numbers. Integrated [Plivo] as a second SMS provider with sync crons, monitor crons, and non-prod compliance bypasses.",
+      "- {Dialer Features}: Shipped 'Call My Phone' — a feature letting candidates receive calls on their own phone during a dialer session. Added support for external users joining an active call session and for joining without audio.",
+      "- {Test Infrastructure}: Migrated the entire dialer integration test suite from live [Twilio] API calls to [MSW] (Mock Service Worker), making tests fast, isolated, and provider-agnostic.",
+      ";",
+    ],
+    techStack: [
+      "TypeScript",
+      "Next.js",
+      "Twilio",
+      "Plivo",
+      "Inngest",
+      "PostgreSQL",
+    ],
+    imageUrls: [],
+  },
+  {
     title: "Fullstack Engineer",
     company: "Lacak.io",
     engagementType: "Fulltime",
@@ -46,10 +73,11 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
   },
   {
     title: "Fullstack Engineer",
-    company: null,
-    engagementType: "Freelance",
+    company: "Raise More",
+    engagementType: "Parttime",
     location: "Remote",
     startDate: new Date("2025-06-01"),
+    endDate: new Date("2026-03-01"),
     description: [
       "Managing observability and error resolution for a political donor fundraising CRM application.",
       "\n",
