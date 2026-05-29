@@ -8,8 +8,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettify": "prettier --write '**/*.{astro,mdx,js,jsx,ts,tsx,json,css,scss,html}'",
-    "lint": "eslint . --ext .ts,.tsx,.astro --fix --config eslint.config.js"
+    "format": "biome format --write .",
+    "prettify": "biome format --write .",
+    "lint": "eslint . --ext .ts,.tsx,.astro --fix --config eslint.config.js",
+    "check": "biome ci . && eslint . --ext .ts,.tsx,.astro --config eslint.config.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -24,7 +26,6 @@
     "astro": "^5.12.3",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
-    "prettier-plugin-tailwindcss": "^0.6.8",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "sharp": "^0.34.3",
@@ -33,19 +34,18 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
-    "@typescript-eslint/parser": "^8.42.0",
-    "eslint": "^9.35.0",
+    "@biomejs/biome": "^2.4.16",
+    "@eslint/js": "^9.39.4",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.3.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^16.4.0",
-    "prettier": "^3.6.2",
-    "prettier-plugin-astro": "^0.14.1",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.6.0",
     "typescript-eslint": "^8.43.0"
   }
 }
