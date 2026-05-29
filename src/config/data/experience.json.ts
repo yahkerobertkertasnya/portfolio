@@ -8,7 +8,6 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
     engagementType: "Fulltime",
     location: "New York City Metropolitan Area (Remote)",
     startDate: new Date("2026-03-01"),
-    endDate: new Date("2026-05-31"),
     description: [
       "Led the design and implementation of a multi-provider telecom abstraction layer for a live political fundraising CRM.",
       "\n",
