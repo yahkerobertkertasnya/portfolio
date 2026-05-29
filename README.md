@@ -33,6 +33,7 @@ Production site: [https://robertwl.my.id](https://robertwl.my.id)
 ├── astro.config.mjs
 ├── Dockerfile
 ├── docker-compose.yml
+├── Makefile
 └── package.json
 ```
 
@@ -56,6 +57,12 @@ pnpm dev
 
 The development server runs at [http://localhost:4321](http://localhost:4321) by default.
 
+You can also use the Makefile shortcut, which creates `.env` from `.env.example` when needed, installs dependencies, and starts Astro on `0.0.0.0:4321`:
+
+```sh
+make dev
+```
+
 ## Environment Variables
 
 Create a local `.env` file from `.env.example` when PostHog analytics should be enabled:
@@ -72,6 +79,24 @@ cp .env.example .env
 Both variables are public Astro environment variables, so do not store private secrets in them.
 
 ## Commands
+
+Common workflows are available through `make`:
+
+| Command | Action |
+| --- | --- |
+| `make help` | List available local, Docker, and deploy commands |
+| `make env` | Copy `.env.example` to `.env` when `.env` is missing |
+| `make install` | Install pnpm dependencies from the lockfile |
+| `make dev` | Start the Astro development server |
+| `make build` | Build the production site |
+| `make preview` | Preview the production build locally |
+| `make check` | Run CI-style checks |
+| `make fresh` | Clean, install, and build |
+| `make docker-up` | Build and start the local Docker Compose stack |
+| `make deploy-server` | Pull the configured branch, rebuild, and restart the server stack |
+| `make vercel-prod` | Deploy to Vercel production |
+
+The underlying pnpm scripts are:
 
 | Command | Action |
 | --- | --- |
@@ -112,6 +137,12 @@ Build and run the production container with Docker Compose:
 
 ```sh
 docker compose up --build
+```
+
+Or use the Makefile wrapper:
+
+```sh
+make docker-up
 ```
 
 The container exposes the app on port `4321`. The production image builds the Astro server output and starts `dist/server/entry.mjs`.
