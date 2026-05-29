@@ -1,54 +1,161 @@
-# Astro Starter Kit: Basics
+# Robert Wiliam Portfolio
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Personal portfolio website for Robert Wiliam, built with Astro, React, Tailwind CSS, and TypeScript. The site presents a home page, professional experience timeline, featured works, contact details, downloadable CV, analytics, and sitemap support.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Production site: [https://robertwl.my.id](https://robertwl.my.id)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- [Astro](https://astro.build/) 5 with server output
+- React islands for interactive components
+- Tailwind CSS for styling
+- TypeScript with the `@/*` alias mapped to `src/*`
+- Biome and ESLint for formatting and linting
+- Vercel adapter, Vercel Analytics, PostHog, and sitemap integration
+- Docker support for containerized deployment
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
-/
+.
 ├── public/
-│   └── favicon.svg
+│   ├── CV_Robert_Wiliam.pdf
+│   └── favicon.png
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── assets/               # Optimized images imported through astro:assets
+│   ├── components/           # Astro and React UI components
+│   ├── config/
+│   │   ├── data/             # Home, works, and experience content
+│   │   └── web.ts            # Route endpoint helpers
+│   ├── models/               # Shared TypeScript interfaces
+│   ├── pages/                # Astro routes
+│   └── utils/                # Formatting, image, date, and class helpers
+├── astro.config.mjs
+├── Dockerfile
+├── docker-compose.yml
+├── Makefile
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Routes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Route | Source | Purpose |
+| --- | --- | --- |
+| `/` | `src/pages/index.astro` | Hero, expertise, CV link, and contact section |
+| `/works` | `src/pages/works.astro` | Professional and personal project showcase |
+| `/experience` | `src/pages/experience.astro` | Work history timeline |
+| `/robots.txt` | `src/pages/robots.txt.ts` | Search crawler configuration |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Getting Started
 
-## 🧞 Commands
+This project requires Node.js and pnpm. The repository pins pnpm through `packageManager`, and `preinstall` rejects installs from other package managers.
 
-All commands are run from the root of the project, from a terminal:
+```sh
+pnpm install
+pnpm dev
+```
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+The development server runs at [http://localhost:4321](http://localhost:4321) by default.
 
-## 👀 Want to learn more?
+You can also use the Makefile shortcut, which creates `.env` from `.env.example` when needed, installs dependencies, and starts Astro on `0.0.0.0:4321`:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+make dev
+```
+
+## Environment Variables
+
+Create a local `.env` file from `.env.example` when PostHog analytics should be enabled:
+
+```sh
+cp .env.example .env
+```
+
+| Variable | Description |
+| --- | --- |
+| `PUBLIC_POSTHOG_KEY` | Public PostHog project key |
+| `PUBLIC_POSTHOG_HOST` | PostHog API host |
+
+Both variables are public Astro environment variables, so do not store private secrets in them.
+
+## Commands
+
+Common workflows are available through `make`:
+
+| Command | Action |
+| --- | --- |
+| `make help` | List available local, Docker, and deploy commands |
+| `make env` | Copy `.env.example` to `.env` when `.env` is missing |
+| `make install` | Install pnpm dependencies from the lockfile |
+| `make dev` | Start the Astro development server |
+| `make build` | Build the production site |
+| `make preview` | Preview the production build locally |
+| `make check` | Run CI-style checks |
+| `make fresh` | Clean, install, and build |
+| `make docker-up` | Build and start the local Docker Compose stack |
+| `make deploy-server` | Pull the configured branch, rebuild, and restart the server stack |
+| `make vercel-prod` | Deploy to Vercel production |
+
+The underlying pnpm scripts are:
+
+| Command | Action |
+| --- | --- |
+| `pnpm dev` | Start the Astro development server |
+| `pnpm start` | Alias for `pnpm dev` |
+| `pnpm build` | Run `astro check` and build the production site |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm check` | Run Biome CI and ESLint checks |
+| `pnpm format` | Format the repository with Biome |
+| `pnpm lint` | Run ESLint with automatic fixes |
+| `pnpm astro ...` | Run Astro CLI commands |
+
+## Editing Content
+
+- Home page copy and expertise cards: `src/config/data/home.json.ts`
+- Work/project entries: `src/config/data/works.json.ts`
+- Experience timeline entries: `src/config/data/experience.json.ts`
+- Route mappings: `src/config/web.ts`
+- Downloadable CV: `public/CV_Robert_Wiliam.pdf`
+- Images: `src/assets/**`
+
+Image paths used in data files are resolved by `src/utils/image-reader.ts` against `src/assets`. For example, `/works/personal/hireverse/image-1.png` maps to `src/assets/works/personal/hireverse/image-1.png`.
+
+## Quality Checks
+
+Run the full local check before opening a pull request:
+
+```sh
+pnpm check
+pnpm build
+```
+
+CI runs Biome formatting checks and ESLint on pull requests. The workflow is defined in `.github/workflows/ci.yml`.
+
+## Docker
+
+Build and run the production container with Docker Compose:
+
+```sh
+docker compose up --build
+```
+
+Or use the Makefile wrapper:
+
+```sh
+make docker-up
+```
+
+The container exposes the app on port `4321`. The production image builds the Astro server output and starts `dist/server/entry.mjs`.
+
+For server deployment, `docker-compose.server.yml` uses the same image and restarts the service unless stopped manually.
+
+## Deployment Notes
+
+The Astro config sets:
+
+- `site` to `https://robertwl.my.id`
+- `output` to `server`
+- `adapter` to `@astrojs/vercel`
+- integrations for React, Tailwind, and sitemap generation
+
+When deploying outside Vercel, use the included Dockerfile or adjust `astro.config.mjs` to the target adapter.
