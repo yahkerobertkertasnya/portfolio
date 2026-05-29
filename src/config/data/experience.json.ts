@@ -6,8 +6,8 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
     title: "Software Engineer",
     company: "Raise More",
     engagementType: "Fulltime",
-    location: "New York City Metropolitan Area",
-    startDate: new Date("2026-02-01"),
+    location: "New York City Metropolitan Area (Remote)",
+    startDate: new Date("2026-03-01"),
     endDate: new Date("2026-05-31"),
     description: [
       "Led the design and implementation of a multi-provider telecom abstraction layer for a live political fundraising CRM.",
@@ -65,10 +65,10 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
     imageUrls: [],
   },
   {
-    title: "Fullstack Engineer",
+    title: "Software Engineer",
     company: "Raise More",
     engagementType: "Parttime",
-    location: "Remote",
+    location: "New York City Metropolitan Area (Remote)",
     startDate: new Date("2025-06-01"),
     endDate: new Date("2026-03-01"),
     description: [
