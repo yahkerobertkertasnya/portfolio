@@ -2,7 +2,9 @@
   "name": "portofolio",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
+    "preinstall": "node -e \"if (!/pnpm\\//.test(process.env.npm_config_user_agent || '')) { console.error('Use pnpm to install dependencies.'); process.exit(1); }\"",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
