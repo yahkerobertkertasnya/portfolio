@@ -3,6 +3,25 @@ import { calculateDuration, formatDuration } from "@/utils/date-calculator";
 
 const rawExperienceData: Omit<IExperience, "duration">[] = [
   {
+    title: "Software Engineer",
+    company: "Raise More",
+    engagementType: "Fulltime",
+    location: "New York City Metropolitan Area (Remote)",
+    startDate: new Date("2026-03-01"),
+    description: [
+      "Led the design and implementation of a multi-provider telecom abstraction layer for a live political fundraising CRM.",
+      "\n",
+      ":",
+      "- {Telecommunication Abstractions}: Architected a provider-agnostic abstraction layer over multiple telecom providers, decoupling all dialer and SMS routes from direct SDK calls. Migrated every dialer route incrementally without disrupting live calling sessions.",
+      "- {Dialer Features}: Designed and shipped multiple end-user dialer features improving call flexibility and participant management for live fundraising sessions.",
+      "- {Test Infrastructure}: Migrated the dialer integration test suite from live API calls to a mocked service layer, making tests fast, isolated, and provider-agnostic.",
+      "- {Code Reviews}: Reviewed and provided feedback on teammates' pull requests, ensuring code quality and consistency across the codebase.",
+      ";",
+    ],
+    techStack: ["TypeScript", "Next.js", "Twilio", "Plivo", "Inngest", "PostgreSQL"],
+    imageUrls: [],
+  },
+  {
     title: "Fullstack Engineer",
     company: "Lacak.io",
     engagementType: "Fulltime",
@@ -45,11 +64,12 @@ const rawExperienceData: Omit<IExperience, "duration">[] = [
     imageUrls: [],
   },
   {
-    title: "Fullstack Engineer",
-    company: null,
-    engagementType: "Freelance",
-    location: "Remote",
+    title: "Software Engineer",
+    company: "Raise More",
+    engagementType: "Parttime",
+    location: "New York City Metropolitan Area (Remote)",
     startDate: new Date("2025-06-01"),
+    endDate: new Date("2026-03-01"),
     description: [
       "Managing observability and error resolution for a political donor fundraising CRM application.",
       "\n",
