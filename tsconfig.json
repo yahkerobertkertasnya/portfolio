@@ -6,15 +6,6 @@
     "baseUrl": "src",
     "paths": { "@/*": ["*"] }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.astro",
-    ".astro/types.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "public"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", ".astro/types.d.ts"],
+  "exclude": ["node_modules", "dist", "public"]
 }

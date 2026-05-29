@@ -3,7 +3,7 @@ const homeData = {
   name: "Robert Wiliam",
   description: [
     "I'm a Full-Stack Engineer passionate about building scalable web applications and AI solutions. With expertise in both frontend and backend development, I've built applications serving thousands of concurrent users daily.",
-    "My experience spans from DevOps and system administration to database architecture and AI implementation, focusing on creating robust and efficient solutions."
+    "My experience spans from DevOps and system administration to database architecture and AI implementation, focusing on creating robust and efficient solutions.",
   ],
   expertise: [
     {
