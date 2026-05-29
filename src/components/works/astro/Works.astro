@@ -59,10 +59,12 @@ const processedDescription = stringPreprocessor(description);
     }
   </div>
   <div class="flex w-[55%] flex-col items-start justify-center max-lg:w-full">
-    <LiveStatus projectUrl={projectUrl} client:load>
+    <LiveStatus
+      projectUrl={projectUrl}
+      client:load>
       <div class="relative flex items-center">
-        <span class="absolute -left-0.5 inline-flex h-4 w-4 animate-ping rounded-full bg-red-500 opacity-75" />
-        <span class="relative inline-flex h-3 w-3 rounded-full bg-red-500" />
+        <span class="absolute -left-0.5 inline-flex h-4 w-4 animate-ping rounded-full bg-red-500 opacity-75"></span>
+        <span class="relative inline-flex h-3 w-3 rounded-full bg-red-500"></span>
         <p class="ps-3 text-base text-white max-lg:text-sm">LIVE</p>
       </div>
     </LiveStatus>
@@ -81,7 +83,9 @@ const processedDescription = stringPreprocessor(description);
           );
         })
       }
-      <LiveStatus projectUrl={projectUrl} client:load>
+      <LiveStatus
+        projectUrl={projectUrl}
+        client:load>
         <a
           target="_blank"
           href={projectUrl}
@@ -97,11 +101,7 @@ const processedDescription = stringPreprocessor(description);
       set:html={processedDescription}
     />
     <div class="flex flex-wrap gap-2 pt-4">
-      {
-        techStack.map((tech) => (
-          <Badge text={tech} />
-        ))
-      }
+      {techStack.map((tech) => <Badge text={tech} />)}
     </div>
   </div>
 </section>
